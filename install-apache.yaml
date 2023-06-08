@@ -7,31 +7,11 @@
  
     - name: Create document root for domain configured in host variable
       file:
-        path: "/var/www/{{ http_host }}"
+        path: "/var/www/index.html"
         state: directory
         owner: www-data
         group: www-data
         mode: '0755'
- 
-    - name: Copy your index file
-      template:
-        src: "files/index-template.html"
-        dest: "/var/www/{{ http_host }}/index.html"
- 
-    - name: Set up virtuahHost
-      template:
-        src: "files/apache-template.conf"
-        dest: "/etc/apache2/sites-available/{{ http_conf }}"
- 
-    - name: Enable site
-      command: a2ensite {{ http_conf }}
-      notify: restart-apache
- 
-    - name: "UFW firewall allow HTTP on port {{ http_port }}"
-      ufw:
-        rule: allow
-        port: "{{ http_port }}"
-        proto: tcp
  
   handlers:
     - name: restart-apache
