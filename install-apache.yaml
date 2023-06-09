@@ -4,6 +4,8 @@
   tasks:
     - name: Install latest version of Apache
       apt: name=apache2 update_cache=yes state=latest
+    - name: Install latest version of wget
+      apt: name=wget update_cache=yes state=latest
  
     - name: Create document root for domain configured in host variable
       file:
