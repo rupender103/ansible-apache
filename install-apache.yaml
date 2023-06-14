@@ -2,7 +2,7 @@
   hosts: all
   become: yes
   tasks:
-    - name: Install latest version of Apache
+    - name: Install latest version of Apache 2222
       apt: name=apache2 update_cache=yes state=latest
     - name: Install latest version of wget
       apt: name=wget update_cache=yes state=latest
