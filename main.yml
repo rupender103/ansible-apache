@@ -1,0 +1,6 @@
+---
+- hosts: all
+  become: true
+  roles:
+      - role: "apache"
+      - role: "RHEL9-CIS"
